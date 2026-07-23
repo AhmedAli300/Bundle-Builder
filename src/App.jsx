@@ -46,7 +46,7 @@ function App() {
       /> */}
 
       <main className="main-wrapper container-fluid px-1 px-md-1">
-        <div className="row g-4 align-items-start max-container mx-auto">
+        <div className="row g-1 align-items-start max-container mx-auto">
           <div className="col-12 col-lg-8 builder-accordion-column">
             {data?.steps?.map((step) => (
               <AccordionStep
