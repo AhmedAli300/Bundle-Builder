@@ -1,12 +1,7 @@
-/**
- * ProductImage renders tailored SVG visual illustrations matching the design spec
- * with dynamic color variants (White, Black, Grey).
- */
+
 export function ProductImage({ productId, variantId = 'white', className = '' }) {
   const isDark = variantId === 'black';
   const isGrey = variantId === 'grey';
-  
-  // Color palette based on variant
   const bodyFill = isDark ? '#23272D' : isGrey ? '#8E95A2' : '#FFFFFF';
   const bodyStroke = isDark ? '#111317' : isGrey ? '#6B7280' : '#E2E8F0';
   const accentFill = isDark ? '#323843' : isGrey ? '#A0A7B5' : '#F1F5F9';
