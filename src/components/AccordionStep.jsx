@@ -30,7 +30,6 @@ export function AccordionStep({
 
   return (
     <div className={`accordion-step ${isOpen ? 'step-open' : 'step-collapsed'}`}>
-      {/* Step Header Bar */}
       <button 
         type="button" 
         className="step-header-btn" 
@@ -55,7 +54,7 @@ export function AccordionStep({
         </div>
       </button>
 
-      {/* Accordion Body */}
+
       {isOpen && (
         <div className="step-body">
           <div className="products-grid">
@@ -72,7 +71,6 @@ export function AccordionStep({
             ))}
           </div>
 
-          {/* Bottom Next Button */}
           {step.nextStepTitle && (
             <div className="step-next-row">
               <button
