@@ -1,10 +1,26 @@
-# Wyze Security System — Interactive React Bundle Builder
+# 🛡️ Wyze Security System — Interactive React Bundle Builder
 
-A production-grade, multi-step bundle builder with a live review panel, data-driven architecture, color variant inventory tracking, step accordion navigation, client-side persistence, Bootstrap 5 grid layout, and automated unit test suite.
+A production-ready, data-driven **React 19** prototype featuring a multi-step bundle builder with a live review panel, Bootstrap 5 grid layout, color variant inventory tracking, step accordion navigation, client-side persistence, and an automated Vitest unit testing suite.
 
 ---
 
-## 🚀 Quick Start Guide
+## 🌟 Key Features
+
+- **📊 Data-Driven Architecture**: All products, pricing, discounts, descriptions, and variant swatches are loaded dynamically from `public/data/products.json` or the optional Express backend `/api/products`.
+- **🎨 Independent Variant Inventory**: Each product color variant (*White*, *Grey*, *Black*) tracks its quantity independently. Selecting a color swatch binds the stepper to that active variant without clearing quantities of other variants.
+- **⚡ Synchronized Steppers & Live Review Panel**: Product card steppers and review panel line items are bidirectionally synchronized. Review panel items are grouped under **CAMERAS**, **SENSORS**, **ACCESSORIES**, and **PLAN**.
+- **💰 Real-Time Total & Savings Calculations**: Dynamically computes active subtotal, pre-discount compare-at total, free shipping, and real-time bundle savings callouts (`Congrats! You're saving $50.92 on your security bundle!`).
+- **📱 Bootstrap 5 Responsive Grid System**:
+  - **Laptops / Large Screens (`min-width: 992px`)**: Builder column takes `col-12 col-lg-8`, 1-column spacer gap (`offset-lg-1`), and Review Panel takes `col-12 col-lg-3`.
+  - **Mobile Viewports (`< 992px`)**: Both sections take `col-12` (100% full width), stacking vertically.
+  - **Zero Horizontal Scroll**: Strict `max-width: 100vw; overflow-x: hidden;` rules prevent any horizontal scrollbars on all screen sizes.
+- **🛒 Polished Checkout Modal**: Features an interactive order receipt breakdown, itemized line items, discount calculation, payment details, and order confirmation state across all mobile and desktop viewports.
+- **💾 Client-Side State Persistence**: "Save my system for later" serializes configuration into `localStorage` (`wyze_bundle_config_v1`), restoring exact selections when shoppers return.
+- **🧪 Automated Unit Testing Suite**: 14 Vitest unit tests verifying steppers, product card swatch interactions, checkout modal states, variant logic, and price calculations.
+
+---
+
+## 🚀 Getting Started
 
 ### Prerequisites
 - Node.js `v18+` or `v20+`
@@ -13,32 +29,30 @@ A production-grade, multi-step bundle builder with a live review panel, data-dri
 ### 1. Installation
 Clone the repository and install dependencies:
 ```bash
-git clone <your-repo-url>
-cd bundle-builder
+git clone https://github.com/AhmedAli300/Bundle-Builder.git
+cd Bundle-Builder
 npm install
 ```
 
 ### 2. Running Locally
 
-#### Running the Frontend Prototype
+#### Run Frontend App
 ```bash
 npm run dev
 ```
 Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-#### Running Unit Tests
+#### Run Unit Tests
 ```bash
 npm run test
 ```
-Runs 11 automated Vitest unit tests verifying steppers, product card interactions, variant tracking, state logic, and pricing calculations.
+Runs the automated test suite powered by Vitest and React Testing Library.
 
-#### (Bonus) Running the Express Backend API
-The application is designed to be **data-driven**. An optional Express backend server is provided in `server.js`:
+#### (Optional Bonus) Run Express Backend API
 ```bash
 npm run server
 ```
-The API server runs at [http://localhost:3001](http://localhost:3001), serving product catalog schemas from `/api/products` and receiving bundle saves at `/api/bundle/save`.
-*(If the backend server is not running, the React application automatically fallbacks seamlessly to the local JSON dataset in `public/data/products.json`).*
+Runs the Express API at [http://localhost:3001](http://localhost:3001). The React app will automatically fetch live data from `/api/products` and fallback to local JSON if offline.
 
 ### 3. Production Build & Linting
 ```bash
@@ -48,39 +62,54 @@ npm run preview
 
 ---
 
-## 🛠️ Key Features & Responsive Grid Architecture
+## 📂 Project Architecture
 
-### 1. Bootstrap 5 Grid System (`col-lg-8` & `col-lg-3 offset-lg-1`)
-- **Large Screens & Laptops (`min-width: 992px`)**:
-  - **Left Builder Column**: Takes `col-lg-8` (8 grid columns).
-  - **Grid Gap / Offset**: Uses `offset-lg-1` (1 column spacer gap).
-  - **Right Review Column**: Takes `col-lg-3` (3 grid columns). Total: `8 + 1 + 3 = 12 columns`.
-- **Mobile Viewports (`< 992px`)**:
-  - Both columns take `col-12` (100% full width), stacking cleanly without overflow.
-- **Zero Horizontal Scroll**: Strict `max-width: 100vw; overflow-x: hidden;` rules prevent any unwanted horizontal scrollbars.
-
-### 2. Data-Driven Architecture
-- All products, pricing, discounts, descriptions, and variant swatches are loaded dynamically from `public/data/products.json` or the Express backend `/api/products`.
-
-### 3. Advanced Color Variant Selector Logic
-- **Independent Variant Inventory**: Each product color variant (e.g., *Wyze Cam v4* in *White*, *Grey*, or *Black*) maintains its own distinct quantity counter.
-- **Bound Stepper Control**: Selecting a color chip binds the product card's quantity stepper directly to that active variant.
-- **Line Item Separation**: The Review Panel displays every variant with quantity > 0 as its own independent line item.
-
-### 4. Client-Side Persistence ("Save my system for later")
-- Clicking **"Save my system for later"** serializes configuration (`quantities`, `selectedVariants`, `openStepId`) into `localStorage` (`wyze_bundle_config_v1`).
+```
+bundle-builder/
+├── public/
+│   └── data/
+│       └── products.json          # Data-driven JSON schema
+├── server.js                      # Express API backend
+├── src/
+│   ├── components/
+│   │   ├── AccordionStep.jsx      # Accordion step wrapper with navigation
+│   │   ├── CheckoutModal.jsx      # Order confirmation & breakdown modal
+│   │   ├── Header.jsx             # Top navigation header & action buttons
+│   │   ├── LearnMoreModal.jsx     # Product detail specifications modal
+│   │   ├── ProductCard.jsx        # Product card with swatches, badges & steppers
+│   │   ├── ProductImage.jsx       # Custom SVG vector graphics matching Wyze hardware
+│   │   ├── QuantityStepper.jsx    # Reusable quantity stepper component
+│   │   ├── ReviewPanel.jsx        # Live summary review panel & guarantee seal
+│   │   └── VariantSelector.jsx    # Color swatch chips selector
+│   ├── hooks/
+│   │   └── useBundleState.js      # Master state management custom hook
+│   ├── test/
+│   │   ├── CheckoutModal.test.jsx # Unit tests for checkout modal
+│   │   ├── ProductCard.test.jsx   # Unit tests for product cards
+│   │   ├── QuantityStepper.test.jsx # Unit tests for quantity stepper
+│   │   ├── setup.js               # Vitest setup file
+│   │   └── useBundleState.test.js # Unit tests for state & pricing calculations
+│   ├── App.css
+│   ├── App.jsx                    # Application layout root (Bootstrap grid)
+│   ├── index.css                  # Design system, CSS variables & modal styles
+│   └── main.jsx                   # Entry point importing Bootstrap 5 CSS
+├── package.json
+├── vite.config.js
+└── README.md
+```
 
 ---
 
-## 🧪 Unit Test Suite (`npm run test`)
+## 💡 Decisions & Technical Tradeoffs
 
-The project includes an automated Unit Testing suite built with **Vitest** and **React Testing Library**:
-
-- `QuantityStepper.test.jsx`: Verifies increment/decrement buttons, min/max limits, and input value changes.
-- `ProductCard.test.jsx`: Tests product title, discount badge rendering, swatch selection events, and selected card styling highlights.
-- `useBundleState.test.js`: Verifies initial seed data, independent variant quantity tracking, calculation of subtotal / compare-at pricing / bundle savings, and `localStorage` persistence.
+1. **Composite State Keys**:
+   - Used composite keys (`productId:variantId` for variant products, `productId` for standard products) inside a single `quantities` map. This enables $O(1)$ lookups, clean serialization for `localStorage`, and simple calculation of step selected counts.
+2. **Bootstrap 5 Integration**:
+   - Integrated Bootstrap 5 Grid CSS for responsive breakpoints (`col-12 col-lg-8` and `col-12 col-lg-3 offset-lg-1`) while using custom CSS variables for design system tokens (colors, radii, cards, seals).
+3. **Inline SVG Visuals**:
+   - Built custom SVG visual illustrations for all products (`Wyze Cam v4`, `Cam Pan v3`, `Floodlight v2`, `Duo Doorbell`, `Battery Cam Pro`, `Motion Sensor`, `Hub`, `MicroSD`, `Cam Unlimited`) with dynamic color props (`white`, `black`, `grey`) to guarantee zero broken image links.
 
 ---
 
 ## 📄 License
-MIT License. Built for frontend take-home evaluation.
+MIT License. Created for frontend take-home evaluation.

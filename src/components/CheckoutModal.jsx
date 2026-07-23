@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { X, CheckCircle2, ShieldCheck, Lock } from 'lucide-react';
+import { X, CheckCircle2, ShieldCheck, Lock, CreditCard } from 'lucide-react';
 
 export function CheckoutModal({ totals, reviewLineItems, onClose }) {
   const [submitted, setSubmitted] = useState(false);
@@ -11,39 +11,50 @@ export function CheckoutModal({ totals, reviewLineItems, onClose }) {
   };
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
+    <div className="modal-overlay" onClick={onClose} role="dialog" aria-modal="true" aria-labelledby="checkout-modal-title">
       <div className="modal-content checkout-modal" onClick={(e) => e.stopPropagation()}>
-        <button type="button" className="modal-close-btn" onClick={onClose}>
-          <X size={20} />
+        <button type="button" className="modal-close-btn" onClick={onClose} aria-label="Close modal">
+          <X size={18} />
         </button>
 
         {submitted ? (
           <div className="checkout-success-state">
-            <CheckCircle2 size={64} className="success-icon" />
-            <h2>Order Placed Successfully!</h2>
-            <p>Thank you for customizing your Wyze security system.</p>
-            <div className="order-number">Order #{orderNumber}</div>
-            <button type="button" className="modal-done-btn" onClick={onClose}>
-              Back to Store
+            <div className="success-icon-badge">
+              <CheckCircle2 size={48} className="success-icon" />
+            </div>
+            <h2 className="success-title">Order Placed Successfully!</h2>
+            <p className="success-desc">Thank you for customizing your Wyze security system.</p>
+            <div className="order-number-pill">
+              <span className="label">Order Reference:</span>
+              <span className="code">#{orderNumber}</span>
+            </div>
+            <button type="button" className="modal-done-btn success-done-btn" onClick={onClose}>
+              Return to Store
             </button>
           </div>
         ) : (
           <div className="checkout-body">
             <div className="checkout-header">
-              <ShieldCheck size={28} className="checkout-logo-icon" />
+              <div className="checkout-icon-badge">
+                <ShieldCheck size={24} />
+              </div>
               <div>
-                <h2>Checkout Summary</h2>
-                <p>Complete your custom Wyze bundle order</p>
+                <h2 id="checkout-modal-title" className="checkout-title">Checkout Summary</h2>
+                <p className="checkout-subtitle">Complete your custom Wyze bundle order</p>
               </div>
             </div>
 
             <div className="checkout-summary-box">
-              <h3>Order Receipt ({totals.totalItems} Items)</h3>
+              <div className="receipt-header-row">
+                <span className="receipt-title">Order Receipt</span>
+                <span className="items-badge">{totals.totalItems} Items</span>
+              </div>
+              
               <div className="checkout-items-mini">
                 {Object.values(reviewLineItems).flatMap((items) => items).map((item) => (
                   <div key={item.itemKey} className="checkout-item-row">
-                    <span>{item.title} × {item.qty}</span>
-                    <span className="bold">${(item.price * item.qty).toFixed(2)}</span>
+                    <span className="item-name">{item.title} <span className="item-qty">× {item.qty}</span></span>
+                    <span className="item-price">${(item.price * item.qty).toFixed(2)}</span>
                   </div>
                 ))}
               </div>
@@ -72,12 +83,39 @@ export function CheckoutModal({ totals, reviewLineItems, onClose }) {
 
             <form onSubmit={handleSubmit} className="checkout-form">
               <div className="form-group">
-                <label>Email Address</label>
-                <input type="email" required placeholder="shopper@example.com" defaultValue="customer@wyze.com" />
+                <label htmlFor="checkout-email">Email Address</label>
+                <input 
+                  id="checkout-email"
+                  type="email" 
+                  required 
+                  placeholder="shopper@example.com" 
+                  defaultValue="customer@wyze.com" 
+                />
               </div>
+
               <div className="form-group">
-                <label>Shipping Address</label>
-                <input type="text" required placeholder="123 Security Blvd" defaultValue="100 Technology Way, Suite 400" />
+                <label htmlFor="checkout-address">Shipping Address</label>
+                <input 
+                  id="checkout-address"
+                  type="text" 
+                  required 
+                  placeholder="123 Security Blvd" 
+                  defaultValue="100 Technology Way, Suite 400" 
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="checkout-card">Payment Method</label>
+                <div className="payment-input-wrapper">
+                  <CreditCard size={18} className="payment-icon" />
+                  <input 
+                    id="checkout-card"
+                    type="text" 
+                    required 
+                    placeholder="•••• •••• •••• 4242" 
+                    defaultValue="•••• •••• •••• 4242" 
+                  />
+                </div>
               </div>
 
               <button type="submit" className="submit-checkout-btn">

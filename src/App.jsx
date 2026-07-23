@@ -40,15 +40,15 @@ function App() {
 
   return (
     <div className="bundle-builder-app">
-      {/* Top Navigation Header
+      {/* Top Navigation Header */}
       <Header 
         onReset={resetBundle} 
         onSave={saveBundle} 
-      /> */}
+      />
 
-      
-      <main className="main-wrapper container-fluid px-1 px-md-1">
-        <div className="row g-0 align-items-start max-container mx-auto">
+      <main className="main-wrapper container-fluid px-3 px-md-4">
+        <div className="row g-4 align-items-start max-container mx-auto">
+          {/* Left Column: 4-Step Accordion (col-12 on Mobile, col-lg-8 on Desktop/Laptops) */}
           <div className="col-12 col-lg-8 builder-accordion-column">
             {data?.steps?.map((step) => (
               <AccordionStep
@@ -66,6 +66,8 @@ function App() {
               />
             ))}
           </div>
+
+          {/* Right Column: Live Review Panel (col-12 on Mobile, col-lg-3 offset-lg-1 on Desktop with 1 column gap) */}
           <div className="col-12 col-lg-3 offset-lg-1 builder-review-column">
             <ReviewPanel
               reviewLineItems={reviewLineItems}
@@ -79,12 +81,14 @@ function App() {
         </div>
       </main>
 
+      {/* Toast Notification Banner */}
       {toastMessage && (
         <div className="toast-banner" role="alert">
           {toastMessage}
         </div>
       )}
 
+      {/* Learn More Details Modal */}
       {activeLearnMoreProduct && (
         <LearnMoreModal
           product={activeLearnMoreProduct}
@@ -92,6 +96,7 @@ function App() {
         />
       )}
 
+      {/* Checkout Order Summary Modal */}
       {isCheckoutOpen && (
         <CheckoutModal
           totals={totals}

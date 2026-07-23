@@ -1,3 +1,4 @@
+/* global process */
 import express from 'express';
 import cors from 'cors';
 import fs from 'fs';
@@ -8,7 +9,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-
 const PORT = process.env.PORT || 3001;
 
 app.use(cors());
@@ -16,7 +16,7 @@ app.use(express.json());
 
 const productsDataPath = path.join(__dirname, 'public', 'data', 'products.json');
 
-
+// GET /api/products - Returns the complete products & bundle steps schema
 app.get('/api/products', (req, res) => {
   try {
     const rawData = fs.readFileSync(productsDataPath, 'utf8');
@@ -28,7 +28,7 @@ app.get('/api/products', (req, res) => {
   }
 });
 
-
+// POST /api/bundle/save - Bonus API endpoint to save customer security system bundle configuration
 app.post('/api/bundle/save', (req, res) => {
   try {
     const bundleData = req.body;
