@@ -65,7 +65,7 @@ function App() {
             ))}
           </div>
 
-          <div className="col-12 col-lg-3 offset-lg-1 builder-review-column">
+          <div className="col-12 col-lg-3 offset-lg-1">
             <ReviewPanel
               reviewLineItems={reviewLineItems}
               totals={totals}
