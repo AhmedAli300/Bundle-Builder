@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useBundleState } from './hooks/useBundleState';
-import { Header } from './components/Header';
-import { AccordionStep } from './components/AccordionStep';
-import { ReviewPanel } from './components/ReviewPanel';
-import { LearnMoreModal } from './components/LearnMoreModal';
-import { CheckoutModal } from './components/CheckoutModal';
+import { Header } from './components/Header/Header';
+import { AccordionStep } from './components/AccordionStep/AccordionStep';
+import { ReviewPanel } from './components/ReviewPanel/ReviewPanel';
+import { LearnMoreModal } from './components/LearnMoreModal/LearnMoreModal';
+import { CheckoutModal } from './components/CheckoutModal/CheckoutModal';
 import './App.css';
 
 function App() {

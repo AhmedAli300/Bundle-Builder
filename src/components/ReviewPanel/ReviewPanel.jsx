@@ -1,6 +1,7 @@
-import { ProductImage } from './ProductImage';
-import { QuantityStepper } from './QuantityStepper';
+import { ProductImage } from '../ProductImage/ProductImage';
+import { QuantityStepper } from '../QuantityStepper/QuantityStepper';
 import { Truck, Sparkles, Bookmark } from 'lucide-react';
+import './ReviewPanel.css';
 
 export function ReviewPanel({
   reviewLineItems,
@@ -62,7 +63,7 @@ export function ReviewPanel({
                               <span className="line-item-name">{item.title}</span>
                             </div>
 
-                            <div className="line-item-controls-row">
+                            <div className="line-item-controls-row d-flex align-items-center justify-content-between">
                               <QuantityStepper
                                 value={item.qty}
                                 onChange={(newQty) => {
@@ -73,7 +74,7 @@ export function ReviewPanel({
                                 ariaLabel={`Quantity for ${item.title}`}
                               />
 
-                              <div className="line-item-price">
+                              <div className="line-item-price d-flex gap-1 fs-2 ">
                                 {item.compareAtPrice !== null && item.compareAtPrice !== undefined && (
                                   <span className="compare-at-price">
                                     ${(item.compareAtPrice * item.qty).toFixed(2)}

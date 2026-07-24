@@ -1,0 +1,212 @@
+
+.checkout-modal {
+  max-width: 580px;
+  padding: 28px;
+  overflow-y: auto;
+}
+.checkout-success-state {
+  text-align: center;
+  padding: 24px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.success-icon-badge {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--color-green-bg);
+  color: var(--color-green-savings);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.success-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--color-text-main);
+  margin-bottom: 6px;
+}
+.success-desc {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-bottom: 16px;
+}
+.order-number-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  margin-bottom: 20px;
+}
+.order-number-pill .label {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+.order-number-pill .code {
+  font-size: 14px;
+  font-weight: 700;
+  font-family: monospace;
+  color: var(--color-purple-seal);
+}
+.success-done-btn {
+  padding: 12px 32px;
+  background: var(--color-purple-seal);
+  font-size: 14px;
+}
+.checkout-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.checkout-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.checkout-icon-badge {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-md);
+  background: var(--color-purple-seal-bg);
+  color: var(--color-purple-seal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.checkout-title {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.checkout-subtitle {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+.checkout-summary-box {
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+.receipt-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.receipt-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text-main);
+}
+.items-badge {
+  font-size: 11px;
+  font-weight: 600;
+  background: #ffffff;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+}
+.checkout-items-mini {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 130px;
+  overflow-y: auto;
+  margin-bottom: 12px;
+  padding-right: 4px;
+}
+.checkout-items-mini::-webkit-scrollbar {
+  width: 3px;
+}
+.checkout-items-mini::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+.checkout-item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+.item-name {
+  color: var(--color-text-main);
+}
+.item-price {
+  font-weight: 700;
+  color: var(--color-text-main);
+}
+.checkout-totals-breakdown {
+  border-top: 1px solid var(--color-border);
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+}
+.breakdown-row {
+  display: flex;
+  justify-content: space-between;
+  color: var(--color-text-muted);
+}
+.discount-row {
+  color: var(--color-green-savings);
+  font-weight: 600;
+}
+.final-total-row {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--color-text-main);
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px dashed var(--color-border);
+}
+.total-highlight {
+  color: var(--color-purple-seal);
+}
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.submit-checkout-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px;
+  background: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
+  margin-top: 6px;
+}
+.submit-checkout-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+/* ==========================================================================
+   MODAL DIALOG STYLING & RESPONSIVE CHECKOUT MODAL
+   ========================================================================== */
+
+@keyframes modalScale {
+  from { opacity: 0; transform: scale(0.96) translateY(8px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}

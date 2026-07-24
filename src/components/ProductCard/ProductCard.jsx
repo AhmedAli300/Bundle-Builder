@@ -1,6 +1,7 @@
-import { ProductImage } from './ProductImage';
-import { VariantSelector } from './VariantSelector';
-import { QuantityStepper } from './QuantityStepper';
+import { ProductImage } from '../ProductImage/ProductImage';
+import { VariantSelector } from '../VariantSelector/VariantSelector';
+import { QuantityStepper } from '../QuantityStepper/QuantityStepper';
+import './ProductCard.css';
 
 export function ProductCard({
   product,
@@ -37,15 +38,15 @@ export function ProductCard({
         </div>
       )}
 
-      <div className="card-inner">
-        <div className="product-image-container">
+      <div className="card-inner d-flex flex-column h-100">
+        <div className="product-image-container d-flex align-items-center justify-content-center">
           <ProductImage 
             productId={product.id} 
             variantId={activeVariantId || 'white'} 
           />
         </div>
 
-        <div className="product-info">
+        <div className="product-info d-flex flex-column flex-grow-1">
           <h3 className="product-title">{product.name}</h3>
           <p className="product-description">{product.description}</p>
           
@@ -65,14 +66,14 @@ export function ProductCard({
             />
           )}
 
-          <div className="card-footer-row">
+          <div className="card-footer-row d-flex align-items-center justify-content-between mt-auto pt-3">
             <QuantityStepper
               value={currentQuantity}
               onChange={handleStepperChange}
               ariaLabel={`Quantity for ${product.name}`}
             />
 
-            <div className="product-pricing">
+            <div className="product-pricing d-flex align-items-baseline gap-2">
               {product.compareAtPrice !== null && product.compareAtPrice !== undefined && (
                 <span className="compare-at-price">
                   ${product.compareAtPrice.toFixed(2)}

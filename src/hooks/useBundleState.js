@@ -115,8 +115,9 @@ export function useBundleState() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(configToSave)
         });
-      } catch {
+      } catch (error){
         // Offline or backend server not running
+        console.log('Offline or backend server not running');
       }
 
       showToast('System configuration saved! It will be restored when you return.');

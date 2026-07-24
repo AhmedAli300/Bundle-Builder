@@ -1,5 +1,6 @@
 import { Camera, Shield, Radio, PlusCircle, ChevronUp, ChevronDown, ArrowRight } from 'lucide-react';
-import { ProductCard } from './ProductCard';
+import { ProductCard } from '../ProductCard/ProductCard';
+import './AccordionStep.css';
 
 export function AccordionStep({
   step,
@@ -32,23 +33,23 @@ export function AccordionStep({
     <div className={`accordion-step ${isOpen ? 'step-open' : 'step-collapsed'}`}>
       <button 
         type="button" 
-        className="step-header-btn" 
+        className="step-header-btn d-flex justify-content-between align-items-center text-start w-100" 
         onClick={onToggle}
         aria-expanded={isOpen}
       >
-        <div className="step-header-left">
+        <div className="step-header-left d-flex flex-column gap-1">
           <div className="step-number-meta">STEP {step.stepNumber} OF 4</div>
-          <div className="step-title-row">
-            <span className="step-icon-wrapper">{getStepIcon(step.icon)}</span>
-            <h2 className="step-title">{step.title}</h2>
+          <div className="step-title-row d-flex align-items-center gap-2">
+            <span className="step-icon-wrapper d-flex align-items-center">{getStepIcon(step.icon)}</span>
+            <h2 className="step-title m-0">{step.title}</h2>
           </div>
         </div>
 
-        <div className="step-header-right">
+        <div className="step-header-right d-flex align-items-center gap-2">
           <span className={`selected-counter ${selectedCount > 0 ? 'active' : ''}`}>
             {selectedCount} selected
           </span>
-          <span className="chevron-icon">
+          <span className="chevron-icon d-flex align-items-center">
             {isOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
           </span>
         </div>
@@ -72,10 +73,10 @@ export function AccordionStep({
           </div>
 
           {step.nextStepTitle && (
-            <div className="step-next-row">
+            <div className="step-next-row d-flex align-items-center mt-3">
               <button
                 type="button"
-                className="next-step-btn"
+                className="next-step-btn d-inline-flex align-items-center gap-2 py-2 px-3"
                 onClick={onNext}
               >
                 <span>Next: {step.nextStepTitle}</span>

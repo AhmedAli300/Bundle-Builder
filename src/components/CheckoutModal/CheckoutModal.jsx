@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { X, CheckCircle2, ShieldCheck, Lock, CreditCard } from 'lucide-react';
+import './CheckoutModal.css';
 
 export function CheckoutModal({ totals, reviewLineItems, onClose }) {
   const [submitted, setSubmitted] = useState(false);
@@ -11,8 +12,8 @@ export function CheckoutModal({ totals, reviewLineItems, onClose }) {
   };
 
   return (
-    <div className="modal-overlay" onClick={onClose} role="dialog" aria-modal="true" aria-labelledby="checkout-modal-title">
-      <div className="modal-content checkout-modal" onClick={(e) => e.stopPropagation()}>
+    <div className="modal-overlay d-flex align-items-center justify-content-center p-3 position-fixed top-0 start-0 end-0 bottom-0" onClick={onClose} role="dialog" aria-modal="true" aria-labelledby="checkout-modal-title">
+      <div className="modal-content checkout-modal d-flex flex-column w-100 position-relative" onClick={(e) => e.stopPropagation()}>
         <button type="button" className="modal-close-btn" onClick={onClose} aria-label="Close modal">
           <X size={18} />
         </button>

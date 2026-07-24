@@ -1,4 +1,5 @@
 import { Minus, Plus } from 'lucide-react';
+import './QuantityStepper.css';
 
 export function QuantityStepper({ 
   value = 0, 

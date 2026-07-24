@@ -1,0 +1,59 @@
+
+.step-header-btn {
+  padding: 18px 22px;
+  background: #FFFFFF;
+  transition: background-color 0.15s ease;
+}
+
+.step-header-btn:hover {
+  background-color: #F8FAFC;
+}
+
+.step-number-meta {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+.step-icon-wrapper {
+  color: var(--color-primary);
+}
+
+.step-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text-main);
+  letter-spacing: -0.01em;
+}
+
+.chevron-icon {
+  color: var(--color-primary);
+}
+
+.step-body {
+  padding: 0 20px 24px 20px;
+  border-top: 1px solid var(--color-border);
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.next-step-btn {
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  font-size: 14px;
+  font-weight: 700;
+  background: #FFFFFF;
+  transition: all 0.2s ease;
+}
+
+.next-step-btn:hover {
+  background: var(--color-primary-light);
+}

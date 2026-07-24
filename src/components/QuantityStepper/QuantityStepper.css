@@ -1,0 +1,39 @@
+.stepper-btn {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  color: var(--color-text-main);
+  transition: background-color 0.15s ease;
+}
+.stepper-container.compact .stepper-btn {
+  width: 20px;
+  height: 20px;
+}
+.stepper-btn:hover:not(:disabled) {
+  background: #E2E8F0;
+}
+.stepper-btn:disabled {
+  color: var(--color-text-light);
+  cursor: not-allowed;
+}
+.stepper-input {
+  width: 28px;
+  text-align: center;
+  border: none;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text-main);
+}
+.stepper-container.compact .stepper-input {
+  width: 22px;
+  font-size: 12px;
+}
+.stepper-input::-webkit-outer-spin-button,
+.stepper-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

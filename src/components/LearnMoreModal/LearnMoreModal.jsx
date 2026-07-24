@@ -1,5 +1,6 @@
 import { X, CheckCircle } from 'lucide-react';
-import { ProductImage } from './ProductImage';
+import { ProductImage } from '../ProductImage/ProductImage';
+import './LearnMoreModal.css';
 
 export function LearnMoreModal({ product, onClose }) {
   if (!product) return null;
