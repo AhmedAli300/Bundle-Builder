@@ -1,10 +1,10 @@
-# 🛡️ Wyze Security System — Interactive React Bundle Builder
+# Wyze Security System — Interactive React Bundle Builder
 
 A production-ready, data-driven **React 19** prototype featuring a multi-step bundle builder with a live review panel, color variant inventory tracking, client-side persistence, responsive design, and automated unit testing.
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
